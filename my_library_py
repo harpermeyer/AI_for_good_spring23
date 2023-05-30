@@ -12,7 +12,6 @@ def cond_prob(table, evidence, evidence_value, target, target_value):
   p_b_a = sum([1 if v==evidence_value else 0 for v in e_list])/len(e_list)
   return p_b_a + .01  #Laplace smoothing factor
 
-
 def cond_probs_product (table, evidence_values, target_column, target_val):
  table_columns=up_list_column_names(table)
  evidence_columns= table_columns [:-1]
@@ -24,7 +23,7 @@ def cond_probs_product (table, evidence_values, target_column, target_val):
  partial_numerator= up_product(cond_prob_list)
  return partial_numerator
  
- def prior_prob (table, target, target_value):
+def prior_prob (table, target, target_value):
   t_list = up_get_column(table, target)
   p_a = sum([1 if v==target_value else 0 for v in t_list])/len(t_list)
   return p_a
@@ -49,7 +48,7 @@ def naive_bayes(table, evidence_row, target):
  
  #metrics function 
  
- def metrics (zipped_list):
+def metrics (zipped_list):
   assert isinstance(zipped_list, list), f'parameter must be a list'
   assert all([isinstance(item, list) for item in zipped_list]), f'parameter must be a list of lists'
   assert all([len(item)==2 for item in zipped_list]), f'parameter must be a zipped list'
